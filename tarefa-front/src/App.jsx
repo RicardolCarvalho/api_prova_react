@@ -31,6 +31,8 @@ export default function App() {
   // 2) Carrega as tarefas assim que tiver token
   useEffect(() => {
     if (!token) return
+      const payload = JSON.parse(atob(token.split('.')[1]));
+    console.log('PAYLOAD DO TOKEN:', payload);
 
     fetch('http://18.231.27.99:8080/tarefa', {
       headers: { Authorization: `Bearer ${token}` }
